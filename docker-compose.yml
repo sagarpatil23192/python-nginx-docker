@@ -1,0 +1,13 @@
+nginx:
+     build: ./nginx-demo
+     container_name: proxy
+     ports:
+         - "8080:80"
+     links:
+         - server
+
+server:
+     build: ./python-demo
+     container_name: server
+     ports:
+         - "9000:9000"
