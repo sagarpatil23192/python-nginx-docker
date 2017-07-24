@@ -1,0 +1,29 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "server",
+      "image": "sagar23/python-demo:v1",
+      "essential": true,
+      "memory": 200,
+      "cpu": 1
+    },
+    {
+      "name": "proxy",
+      "image": "sagar23/nginx-demo:v1",
+      "essential": true,
+      "memory": 200,
+      "cpu": 1,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "links": [
+        "server"
+      ]
+    }
+  ]
+}
